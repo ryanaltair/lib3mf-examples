@@ -20,7 +20,7 @@ ZIP compression). This will come when time passes.
 The specification can be downloaded at
 http://3mf.io/what-is-3mf/3mf-specification/
 
-For the source code of the library code, please refer to 
+For the source code of the library, please refer to 
 https://github.com/3MFConsortium/lib3mf
 
 For a more detailed documentation, please take a look into the PDF in the root directory
