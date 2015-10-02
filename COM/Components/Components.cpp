@@ -95,7 +95,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	CComPtr<ILib3MFModelWriter> p3MFWriter;
 	CComPtr<ILib3MFModelMeshObject> pMeshObject;
 	CComPtr<ILib3MFModelComponentsObject> pComponentsObject;
-	CComPtr<ILib3MFModelBuildItem> pBuildItem;
+	CComPtr<ILib3MFModelBuildItem> pBuildItem1;
+	CComPtr<ILib3MFModelBuildItem> pBuildItem2;
+	CComPtr<ILib3MFModelBuildItem> pBuildItem3;
 	CComPtr<ILib3MFModelComponent> pComponent1;
 	CComPtr<ILib3MFModelComponent> pComponent2;
 	CComPtr<ILib3MFModelComponent> pComponent3;
@@ -129,7 +131,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 
 	if ((nInterfaceVersion != NMR_APIVERSION_INTERFACE)) {
-		std::cout << "invalid 3MF Library version: " << NMR_APIVERSION_INTERFACE << std::endl;
+		std::cout << "invalid 3MF Library version: " << nInterfaceVersion << std::endl;
+		std::cout << "3MF Library version should be: " << NMR_APIVERSION_INTERFACE << std::endl;
 		return -1;
 	}
 
@@ -223,7 +226,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	// Add Build Item for Component
 	mTransform = createTranslationMatrix(0.0f, 0.0f, 0.0f);
-	hResult = pModel->AddBuildItem(pComponentsObject, &mTransform, &pBuildItem);
+	hResult = pModel->AddBuildItem(pComponentsObject, &mTransform, &pBuildItem1);
 	if (hResult != S_OK) {
 		std::cout << "could not create build item: " << std::hex << hResult << std::endl;
 		return -1;
@@ -231,7 +234,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	// Add second Build Item for Component
 	mTransform = createTranslationMatrix(200.0f, 40.0f, 10.0f);
-	hResult = pModel->AddBuildItem(pComponentsObject, &mTransform, &pBuildItem);
+	hResult = pModel->AddBuildItem(pComponentsObject, &mTransform, &pBuildItem2);
 	if (hResult != S_OK) {
 		std::cout << "could not create build item: " << std::hex << hResult << std::endl;
 		return -1;
@@ -239,7 +242,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	// Add third Build Item for Mesh Object
 	mTransform = createTranslationMatrix(-40.0f, 0.0f, 20.0f);
-	hResult = pModel->AddBuildItem(pMeshObject, &mTransform, &pBuildItem);
+	hResult = pModel->AddBuildItem(pMeshObject, &mTransform, &pBuildItem3);
 	if (hResult != S_OK) {
 		std::cout << "could not create build item: " << std::hex << hResult << std::endl;
 		return -1;
@@ -249,7 +252,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	// Output scene as STL and 3MF
 
 	// Create Model Writer
-	hResult = pModel->QueryWriter(L"stl", &pSTLWriter);
+	hResult = pModel->QueryWriter("stl", &pSTLWriter);
 	if (hResult != S_OK) {
 		std::cout << "could not create model reader: " << std::hex << hResult << std::endl;
 		return -1;
@@ -264,7 +267,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 
 	// Create Model Writer
-	hResult = pModel->QueryWriter(L"3mf", &p3MFWriter);
+	hResult = pModel->QueryWriter("3mf", &p3MFWriter);
 	if (hResult != S_OK) {
 		std::cout << "could not create model reader: " << std::hex << hResult << std::endl;
 		return -1;

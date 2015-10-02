@@ -264,7 +264,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
 	// Create Model Writer
-	hResult = pModel->QueryReader(L"3mf", &p3MFReader);
+	hResult = pModel->QueryReader("3mf", &p3MFReader);
 	if (hResult != S_OK) {
 		std::cout << "could not create model reader: " << std::hex << hResult << std::endl;
 		return -1;

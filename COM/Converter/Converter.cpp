@@ -86,7 +86,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 
 	if ((nInterfaceVersion != NMR_APIVERSION_INTERFACE)) {
-		std::cout << "invalid 3MF Library version: " << NMR_APIVERSION_INTERFACE << std::endl;
+		std::cout << "invalid 3MF Library version: " << nInterfaceVersion << std::endl;
+		std::cout << "3MF Library version should be: " << NMR_APIVERSION_INTERFACE << std::endl;
 		return -1;
 	}
 
@@ -100,8 +101,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 
 	// Extract Extension of filename
-	std::wstring sReaderName;
-	std::wstring sWriterName;
+	std::string sReaderName;
+	std::string sWriterName;
 	std::wstring sNewExtension;
 	std::wstring sFilename(argv[1]);
 	std::wstring sExtension = PathFindExtension(sFilename.c_str());
@@ -113,13 +114,13 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	// Which Reader and Writer classes do we need?
 	if (sExtension == L".stl") {
-		sReaderName = L"stl";
-		sWriterName = L"3mf";
+		sReaderName = "stl";
+		sWriterName = "3mf";
 		sNewExtension = L".3mf";
 	}
 	if (sExtension == L".3mf") {
-		sReaderName = L"3mf";
-		sWriterName = L"stl";
+		sReaderName = "3mf";
+		sWriterName = "stl";
 		sNewExtension = L".stl";
 	}
 	if (sReaderName.length() == 0) {

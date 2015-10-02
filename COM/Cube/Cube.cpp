@@ -107,7 +107,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 
 	if ((nInterfaceVersion != NMR_APIVERSION_INTERFACE)) {
-		std::cout << "invalid 3MF Library version: " << NMR_APIVERSION_INTERFACE << std::endl;
+		std::cout << "invalid 3MF Library version: " << nInterfaceVersion << std::endl;
+		std::cout << "3MF Library version should be: " << NMR_APIVERSION_INTERFACE << std::endl;
 		return -1;
 	}
 
@@ -180,7 +181,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	// Output cube as STL and 3MF
 
 	// Create Model Writer
-	hResult = pModel->QueryWriter(L"stl", &pSTLWriter);
+	hResult = pModel->QueryWriter("stl", &pSTLWriter);
 	if (hResult != S_OK) {
 		std::cout << "could not create model reader: " << std::hex << hResult << std::endl;
 		return -1;
@@ -195,7 +196,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 
 	// Create Model Writer
-	hResult = pModel->QueryWriter(L"3mf", &p3MFWriter);
+	hResult = pModel->QueryWriter("3mf", &p3MFWriter);
 	if (hResult != S_OK) {
 		std::cout << "could not create model reader: " << std::hex << hResult << std::endl;
 		return -1;
