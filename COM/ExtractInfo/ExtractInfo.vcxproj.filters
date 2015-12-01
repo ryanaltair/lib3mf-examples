@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Components.cpp">
+    <ClCompile Include="ExtractInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -117,7 +117,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 
 	// Create Model Instance
-	hResult = lib3mf_createmodel(&pModel);
+	hResult = lib3mf_createmodel(&pModel, true);
 	if (hResult != S_OK) {
 		std::cout << "could not create model: " << std::hex << hResult << std::endl;
 		return -1;

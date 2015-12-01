@@ -104,7 +104,7 @@ int main ()
 	}
 
 	// Create Model Instance
-	hResult = lib3mf_createmodel(&pModel);
+	hResult = lib3mf_createmodel(&pModel, true);
 	if (hResult != LIB3MF_OK) {
 		std::cout << "could not create model: " << std::hex << hResult << std::endl;
 		return -1;
@@ -121,7 +121,7 @@ int main ()
 	}
 
 	// Set custom name
-	hResult = lib3mf_object_setname(pMeshObject, L"Cube");
+	hResult = lib3mf_object_setnameutf8(pMeshObject, "Box");
 	if (hResult != LIB3MF_OK) {
 		std::cout << "could not set object name: " << std::hex << hResult << std::endl;
 		lib3mf_getlasterror(pMeshObject, &nErrorMessage, &pszErrorMessage);
